@@ -1,7 +1,9 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+import { CardListComponent } from "./components/Card.list/CardListComponent";
 
 function App() {
   const [state, setState] = useState({ monsters: [] });
@@ -13,9 +15,11 @@ function App() {
 
   return (
     <div className="App">
-      {state.monsters.map((monster) => (
-        <h1 key={monster.key}>{monster.name}</h1>
-      ))}
+      <CardListComponent name="Aaron">
+        {state.monsters.map((monster) => (
+          <h1 key={monster.key}>{monster.name}</h1>
+        ))}
+      </CardListComponent>
     </div>
   );
 }
