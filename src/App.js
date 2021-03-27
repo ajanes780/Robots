@@ -29,9 +29,9 @@ function App() {
     return monster.name.toLowerCase().includes(search.toLowerCase());
   });
 
-  console.log("this");
   return (
     <div className="App">
+      <h1> Robot Rolodex</h1>
       <SearchBox
         placeholder="Search Robots"
         handleChange={(e) =>
