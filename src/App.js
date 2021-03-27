@@ -1,7 +1,7 @@
-// import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { SearchBox } from "./components/searchbox/Searchbox";
 
 import { CardListComponent } from "./components/Card.list/CardListComponent";
 
@@ -24,19 +24,17 @@ function App() {
   //destructor state so we can filter data
   const { monsters, search } = state;
 
-  console.log("this is my state obj", state);
   // lets filter the data
   const filteredMonsters = monsters.filter((monster) => {
-    return monster.name.toLowerCase().includes(search);
+    return monster.name.toLowerCase().includes(search.toLowerCase());
   });
 
   console.log("this");
   return (
     <div className="App">
-      <input
-        type="search"
-        placeholder="search robots"
-        onChange={(e) =>
+      <SearchBox
+        placeholder="Search Robots"
+        handleChange={(e) =>
           setState((prev) => ({ ...prev, search: e.target.value }))
         }
       />
