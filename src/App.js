@@ -6,7 +6,7 @@ import axios from "axios";
 import { CardListComponent } from "./components/Card.list/CardListComponent";
 
 function App() {
-  const [state, setState] = useState({ monsters: [] });
+  const [state, setState] = useState({ monsters: [], searchField: "" });
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
@@ -15,11 +15,12 @@ function App() {
 
   return (
     <div className="App">
-      <CardListComponent name="Aaron">
-        {state.monsters.map((monster) => (
-          <h1 key={monster.key}>{monster.name}</h1>
-        ))}
-      </CardListComponent>
+      <input
+        type="search"
+        placeholder="search robots"
+        onChange={(e) => setState({ searchField: e.target.value })}
+      />
+      <CardListComponent monsters={state.monsters} />
     </div>
   );
 }
