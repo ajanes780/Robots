@@ -6,21 +6,41 @@ import axios from "axios";
 import { CardListComponent } from "./components/Card.list/CardListComponent";
 
 function App() {
-  const [state, setState] = useState({ monsters: [], searchField: "" });
+  //local state object
+  const [state, setState] = useState({
+    monsters: [],
+    search: "This is a test",
+  });
+
+  // basic useEffect axios pattern to get data from api spreading state as to not over write it
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
-      .then((users) => setState({ monsters: users.data }));
+      .then((users) =>
+        setState((prev) => ({ ...prev, monsters: users.data, search: "" }))
+      );
+  }, []);
+
+  //destructor state so we can filter data
+  const { monsters, search } = state;
+
+  console.log("this is my state obj", state);
+  // lets filter the data
+  const filteredMonsters = monsters.filter((monster) => {
+    return monster.name.toLowerCase().includes(search);
   });
 
+  console.log("this");
   return (
     <div className="App">
       <input
         type="search"
         placeholder="search robots"
-        onChange={(e) => setState({ searchField: e.target.value })}
+        onChange={(e) =>
+          setState((prev) => ({ ...prev, search: e.target.value }))
+        }
       />
-      <CardListComponent monsters={state.monsters} />
+      <CardListComponent monsters={filteredMonsters} />
     </div>
   );
 }
