@@ -1,6 +1,6 @@
 # POC
 
-- Use a api for state
+- Use a API for state
 - Map and display state
 - Filter and update state based on custom search
 
