@@ -1,7 +1,7 @@
 # POC
 
 - Use a API for state
-- Map and display state
+- Map, Filter and display state dynamicly as the user seraches 
 - Filter and update state based on custom search
 
   <a href="https://605f8c7dfd0e7c7598baa55d--lucid-mahavira-7fa8f3.netlify.app/">Try it out here </a>
